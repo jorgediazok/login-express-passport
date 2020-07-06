@@ -1,7 +1,6 @@
 const passport = require('passport');
-const localStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
-const user = require('../models/user');
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -14,7 +13,7 @@ passport.deserializeUser(async (id, done) => {
 
 passport.use(
   'local-signup',
-  new localStrategy(
+  new LocalStrategy(
     {
       usernameField: 'email',
       passwordField: 'password',
@@ -41,7 +40,7 @@ passport.use(
 
 passport.use(
   'local-signin',
-  new localStrategy(
+  new LocalStrategy(
     {
       usernameField: 'email',
       passwordField: 'password',
